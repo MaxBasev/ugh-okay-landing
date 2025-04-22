@@ -1,103 +1,118 @@
 "use client";
+import { useEffect, useState } from 'react';
 
 export default function WhyItWorks() {
-	const reasons = [
+	const [loaded, setLoaded] = useState(false);
+
+	useEffect(() => {
+		setLoaded(true);
+	}, []);
+
+	const quotes = [
 		{
-			icon: '🧠',
-			title: 'Your list, not some guru\'s',
-			text: 'Because let\'s be honest, that productivity guru is probably procrastinating too.'
+			text: "Sometimes all you need is a sarcastic push.",
+			author: "UghOkay v1.0",
+			delay: "0.1s"
 		},
 		{
-			icon: '💤',
-			title: 'No decision fatigue',
-			text: 'We decide what to show you. Blame us if it\'s "drink water" again.'
+			text: "Procrastination? Never heard of her.",
+			author: "Definitely not you",
+			delay: "0.3s"
 		},
 		{
-			icon: '🧘',
-			title: 'Zero guilt trips',
-			text: 'Your mom already does that for free. We won\'t compete with her.'
+			text: "You could scroll... or you could tap.",
+			author: "The wise app",
+			delay: "0.5s"
 		},
 		{
-			icon: '✅',
-			title: 'Bare minimum = win',
-			text: 'Did one thing? Congratulations, you\'re basically Elon Musk now.'
-		},
-		{
-			icon: '🔕',
-			title: 'Offline & distraction-free',
-			text: 'No notifications, no cloud, no "Please update to version 73.1.4"'
-		},
+			text: "Your screen can either waste time or save it.",
+			author: "Choose wisely",
+			delay: "0.7s"
+		}
 	];
 
 	return (
 		<section style={{
-			padding: '6rem 0',
-			backgroundColor: '#f9fafb'
+			padding: '8rem 1.5rem',
+			backgroundColor: '#0F0F0F',
+			position: 'relative',
+			overflow: 'hidden'
 		}}>
+			{/* Декоративный фон */}
+			<div style={{
+				position: 'absolute',
+				top: '0',
+				right: '0',
+				width: '100%',
+				height: '100%',
+				background: 'radial-gradient(circle at top right, rgba(236, 72, 153, 0.1), transparent 60%)',
+				zIndex: 0
+			}}></div>
+
 			<div style={{
 				maxWidth: '1200px',
 				margin: '0 auto',
-				padding: '0 1rem'
+				position: 'relative',
+				zIndex: 1
 			}}>
-				<h2 style={{
-					fontSize: '2.5rem',
-					fontWeight: 'bold',
-					textAlign: 'center',
-					marginBottom: '3.5rem',
-					color: '#222222'
-				}}>
-					Why It Works
-				</h2>
+				<div className={loaded ? 'animate-in' : ''} style={{ opacity: loaded ? 1 : 0, transition: 'opacity 0.5s ease' }}>
+					<h2 style={{
+						fontSize: '3rem',
+						fontWeight: 'bold',
+						textAlign: 'center',
+						marginBottom: '5rem',
+						color: 'var(--text)',
+						position: 'relative',
+						display: 'inline-block'
+					}}>
+						<span className="gradient-text">Why It Works</span>
+					</h2>
+				</div>
 
 				<div style={{
 					display: 'grid',
-					gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-					gap: '2rem',
+					gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
+					gap: '2.5rem',
 					maxWidth: '1100px',
 					margin: '0 auto'
 				}}>
-					{reasons.map((reason, index) => (
+					{quotes.map((quote, index) => (
 						<div
 							key={index}
+							className="quote-card"
 							style={{
-								backgroundColor: '#FFFFFF',
-								padding: '2rem',
-								borderRadius: '1rem',
-								boxShadow: '0 4px 15px rgba(0, 0, 0, 0.05)',
+								opacity: loaded ? 1 : 0,
+								transform: loaded ? 'translateY(0)' : 'translateY(30px)',
+								transition: `all 0.7s ease ${quote.delay}`,
+								padding: '2.5rem',
 								display: 'flex',
 								flexDirection: 'column',
-								alignItems: 'center',
-								textAlign: 'center',
-								border: '1px solid #f0f0f0',
+								justifyContent: 'center',
 								height: '100%',
-								transition: 'all 0.3s ease'
-							}}
-							onMouseEnter={(e) => {
-								e.currentTarget.style.transform = 'translateY(-8px)';
-								e.currentTarget.style.boxShadow = '0 12px 20px rgba(0, 0, 0, 0.08)';
-							}}
-							onMouseLeave={(e) => {
-								e.currentTarget.style.transform = 'translateY(0)';
-								e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.05)';
+								minHeight: '180px'
 							}}
 						>
-							<div style={{
-								fontSize: '4rem',
-								marginBottom: '1.25rem',
-								transform: 'rotate(-5deg)',
-								filter: 'drop-shadow(0px 3px 3px rgba(0,0,0,0.1))'
-							}}>{reason.icon}</div>
-							<h3 style={{
-								fontSize: '1.5rem',
-								fontWeight: '600',
-								color: '#222222',
-								marginBottom: '0.75rem'
-							}}>{reason.title}</h3>
 							<p style={{
-								fontSize: '1.125rem',
-								color: '#666666',
-								lineHeight: '1.5'
-							}}>{reason.text}</p>
+								fontSize: '1.5rem',
+								fontWeight: '500',
+								fontStyle: 'italic',
+								color: 'var(--text)',
+								marginBottom: '1.5rem',
+								lineHeight: '1.4',
+								textAlign: 'center'
+							}}>
+								&quot;{quote.text}&quot;
+							</p>
+
+							<p style={{
+								color: 'var(--secondary)',
+								fontSize: '0.95rem',
+								fontWeight: '600',
+								textAlign: 'right',
+								marginTop: 'auto'
+							}}>
+								— {quote.author}
+							</p>
 						</div>
 					))}
 				</div>

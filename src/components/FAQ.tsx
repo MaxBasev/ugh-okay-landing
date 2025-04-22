@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 type FAQItemProps = {
 	question: string;
@@ -12,7 +12,7 @@ function FAQItem({ question, answer }: FAQItemProps) {
 
 	return (
 		<div style={{
-			borderBottom: '1px solid #e5e7eb',
+			borderBottom: '1px solid var(--border)',
 			padding: '1.25rem 0',
 			transition: 'all 0.3s ease'
 		}}>
@@ -33,7 +33,7 @@ function FAQItem({ question, answer }: FAQItemProps) {
 				<h3 style={{
 					fontSize: '1.25rem',
 					fontWeight: '600',
-					color: '#222222',
+					color: 'var(--text)',
 					transition: 'color 0.2s ease'
 				}}>{question}</h3>
 				<span style={{
@@ -42,7 +42,7 @@ function FAQItem({ question, answer }: FAQItemProps) {
 					transition: 'transform 0.3s ease',
 					transform: isOpen ? 'rotate(-180deg)' : 'rotate(0)'
 				}}>
-					<svg style={{ height: '1.5rem', width: '1.5rem', color: '#9B00FF' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<svg style={{ height: '1.5rem', width: '1.5rem', color: 'var(--primary)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
 						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
 					</svg>
 				</span>
@@ -57,7 +57,7 @@ function FAQItem({ question, answer }: FAQItemProps) {
 				paddingRight: '3rem'
 			}}>
 				<p style={{
-					color: '#666666',
+					color: 'var(--muted)',
 					lineHeight: '1.6',
 					fontSize: '1.125rem'
 				}}>{answer}</p>
@@ -67,6 +67,12 @@ function FAQItem({ question, answer }: FAQItemProps) {
 }
 
 export default function FAQ() {
+	const [isLoaded, setIsLoaded] = useState(false);
+
+	useEffect(() => {
+		setIsLoaded(true);
+	}, []);
+
 	const faqItems = [
 		{
 			question: "Will it yell at me?",
@@ -92,28 +98,45 @@ export default function FAQ() {
 
 	return (
 		<section style={{
-			padding: '6rem 0',
-			backgroundColor: '#FFFFFF',
-			background: 'linear-gradient(180deg, #FFFFFF 0%, #f9fafb 100%)'
+			padding: '8rem 1.5rem',
+			backgroundColor: 'var(--bg)',
+			backgroundImage: 'linear-gradient(to bottom, #0D0D0D, #0F0F0F)',
+			position: 'relative',
+			overflow: 'hidden'
 		}}>
+			{/* Gradient background */}
 			<div style={{
+				position: 'absolute',
+				top: '0',
+				right: '0',
+				width: '100%',
+				height: '100%',
+				background: 'radial-gradient(circle at top right, rgba(139, 92, 246, 0.1), transparent 70%)',
+				zIndex: 0
+			}}></div>
+
+			<div className={`${isLoaded ? 'animate-in' : ''}`} style={{
 				maxWidth: '1200px',
 				margin: '0 auto',
-				padding: '0 1rem'
+				position: 'relative',
+				zIndex: 1,
+				opacity: isLoaded ? 1 : 0,
+				transform: isLoaded ? 'translateY(0)' : 'translateY(20px)',
+				transition: 'opacity 0.8s ease, transform 0.8s ease',
 			}}>
 				<h2 style={{
-					fontSize: '2.5rem',
+					fontSize: '3rem',
 					fontWeight: 'bold',
 					textAlign: 'center',
 					marginBottom: '1rem',
-					color: '#222222'
+					color: 'var(--text)'
 				}}>
-					FAQ
+					<span className="gradient-text">FAQ</span>
 				</h2>
 
 				<p style={{
 					fontSize: '1.25rem',
-					color: '#666666',
+					color: 'var(--muted)',
 					textAlign: 'center',
 					maxWidth: '600px',
 					margin: '0 auto 3.5rem',
@@ -122,14 +145,12 @@ export default function FAQ() {
 					(Frequently Avoided Questions)
 				</p>
 
-				<div style={{
+				<div className="quote-card" style={{
 					maxWidth: '800px',
 					margin: '0 auto',
-					backgroundColor: '#FFFFFF',
-					borderRadius: '1rem',
-					boxShadow: '0 10px 25px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.03)',
-					padding: '1.5rem 2rem',
-					border: '1px solid #f3f4f6'
+					padding: '2rem',
+					position: 'relative',
+					overflow: 'hidden',
 				}}>
 					{faqItems.map((item, index) => (
 						<FAQItem
@@ -141,20 +162,21 @@ export default function FAQ() {
 
 					<div style={{
 						marginTop: '2rem',
-						padding: '1rem',
-						backgroundColor: 'rgba(155, 0, 255, 0.03)',
-						borderRadius: '0.5rem',
+						padding: '1.5rem',
+						backgroundColor: 'rgba(139, 92, 246, 0.1)',
+						borderRadius: '0.75rem',
 						display: 'flex',
 						alignItems: 'center',
-						gap: '1rem'
+						gap: '1rem',
+						border: '1px solid rgba(139, 92, 246, 0.2)'
 					}}>
 						<div style={{ fontSize: '1.5rem' }}>💡</div>
 						<p style={{
-							fontSize: '0.875rem',
-							color: '#666666',
+							fontSize: '0.95rem',
+							color: 'var(--muted)',
 							margin: 0
 						}}>
-							Have more questions? Great way to procrastinate! Email us at <a href="mailto:hi@ughokay.app" style={{ color: '#9B00FF', textDecoration: 'none' }}>hi@ughokay.app</a>
+							Have more questions? Great way to procrastinate! Email us at <a href="mailto:hi@ughokay.app" style={{ color: 'var(--secondary)', textDecoration: 'none', fontWeight: '500' }}>hi@ughokay.app</a>
 						</p>
 					</div>
 				</div>

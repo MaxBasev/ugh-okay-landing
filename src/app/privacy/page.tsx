@@ -1,11 +1,9 @@
-import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 
 export default function PrivacyPolicy() {
 	return (
 		<main>
-			<Header />
 			<div className="container mx-auto px-4 py-16">
 				<div className="max-w-3xl mx-auto">
 					<h1 className="text-4xl font-bold mb-8">Privacy Policy</h1>

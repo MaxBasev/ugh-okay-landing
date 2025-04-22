@@ -1,25 +1,88 @@
 :root {
-  --primary: #9B00FF;
-  --secondary: #FF4FDB;
-  --bg: #ffffff;
-  --text: #222222;
-  --muted: #666666;
+  --primary: #8B5CF6;
+  --secondary: #EC4899;
+  --bg: #0D0D0D;
+  --card-bg: #1C1C1C;
+  --text: #FFFFFF;
+  --muted: #B3B3B3;
+  --border: rgba(255, 255, 255, 0.1);
+  --gradient: linear-gradient(135deg, #8B5CF6, #EC4899);
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #222222;
-  background: #ffffff;
+  color: var(--text);
+  background: var(--bg);
 }
 
 * {
   box-sizing: border-box;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.quote-card {
+  background: linear-gradient(135deg, #1C1C1C, #1A1A2E);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  position: relative;
+}
+
+.quote-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient);
+}
+
+.quote-text {
+  font-style: italic;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  color: var(--text);
+}
+
+.quote-author {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--secondary);
+  margin: 0;
+  text-align: right;
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
 .text-primary {
