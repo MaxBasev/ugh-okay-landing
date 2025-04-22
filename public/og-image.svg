@@ -1,0 +1,19 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="white"/>
+  
+  <!-- Logo (мозг в шлеме) -->
+  <g transform="translate(350, 180) scale(3)">
+    <!-- Шлем -->
+    <path d="M8 18C8 12.477 12.477 8 18 8H30C35.523 8 40 12.477 40 18V30C40 35.523 35.523 40 30 40H18C12.477 40 8 35.523 8 30V18Z" fill="#9B00FF" stroke="#222222" stroke-width="2"/>
+    
+    <!-- Мозг -->
+    <path d="M17 18C17 18 19 16 22 16C25 16 26 18 26 18C26 18 27 16 30 16C33 16 35 18 35 18V22C35 22 33 20 30 20C27 20 26 22 26 22C26 22 25 20 22 20C19 20 17 22 17 22V18Z" fill="#FF4FDB" stroke="#222222" stroke-width="1.5"/>
+    <path d="M17 26C17 26 19 24 22 24C25 24 26 26 26 26C26 26 27 24 30 24C33 24 35 26 35 26V30C35 30 33 32 30 32C27 32 26 30 26 30C26 30 25 32 22 32C19 32 17 30 17 30V26Z" fill="#FF4FDB" stroke="#222222" stroke-width="1.5"/>
+  </g>
+  
+  <!-- Название -->
+  <text x="600" y="400" fill="#222222" font-family="Arial, sans-serif" font-weight="bold" font-size="72" text-anchor="middle">UghOkay</text>
+  
+  <!-- Слоган -->
+  <text x="600" y="460" fill="#666666" font-family="Arial, sans-serif" font-size="28" text-anchor="middle">Stop Procrastinating Without Stress</text>
+</svg> 
