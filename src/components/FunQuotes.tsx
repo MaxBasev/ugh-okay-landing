@@ -1,67 +1,70 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function FunQuotes() {
 	const quotes = [
 		{
-			text: "Feels like a personal assistant with ADHD and good intentions.",
-			author: "A user, allegedly"
+			quote: "I was skeptical about another productivity app until I realized it didn't actually make me productive. It just made me feel less bad about it. 10/10.",
+			author: "Sarah H., Professional Procrastinator",
+			avatar: "👩‍💼"
 		},
 		{
-			text: "I clicked. I lived. I kinda cleaned my desk.",
-			author: "Someone who probably exists"
+			quote: "Finally, an app that doesn't make me feel guilty for watching YouTube instead of working. The gentle sarcasm is *chef's kiss*.",
+			author: "Michael R., Deadline Avoider",
+			avatar: "👨‍💻"
 		},
 		{
-			text: "I wanted to scroll TikTok, but this app told me to drink water. Now I'm hydrated and confused.",
-			author: "An influencer who forgot to influence"
+			quote: "My therapist recommended this app to help with my productivity anxiety. Now I need therapy for my app addiction instead.",
+			author: "Jamie L., Task Postponer",
+			avatar: "🧘‍♀️"
 		},
 		{
-			text: "Finally, an app that respects my ambition and my laziness.",
-			author: "You, in an alternate universe"
+			quote: "I've tried all the productivity apps. This is the only one that understands I'm never going to change, and that's oddly comforting.",
+			author: "Alex B., Professional Overthinker",
+			avatar: "🤔"
+		},
+		{
+			quote: "The notifications that say 'You know what to do. Or don't. Whatever.' are strangely more motivating than anything else I've tried.",
+			author: "Taylor S., Chronic List-Maker",
+			avatar: "📝"
 		}
 	];
 
 	const [currentQuote, setCurrentQuote] = useState(0);
-	const [isAutoplay, setIsAutoplay] = useState(true);
 	const [isLoaded, setIsLoaded] = useState(false);
+	const [isTransitioning, setIsTransitioning] = useState(false);
+	const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
 	useEffect(() => {
 		setIsLoaded(true);
+
+		// Auto-rotate quotes every 7 seconds
+		intervalRef.current = setInterval(() => {
+			changeQuote();
+		}, 7000);
+
+		return () => {
+			if (intervalRef.current) clearInterval(intervalRef.current);
+		};
 	}, []);
 
-	useEffect(() => {
-		let interval: NodeJS.Timeout | undefined;
-		if (isAutoplay) {
-			interval = setInterval(() => {
-				setCurrentQuote((prev) => (prev + 1) % quotes.length);
-			}, 5000);
-		}
-		return () => {
-			if (interval) clearInterval(interval);
-		};
-	}, [quotes.length, isAutoplay]);
+	const changeQuote = () => {
+		setIsTransitioning(true);
+
+		setTimeout(() => {
+			setCurrentQuote((prev) => (prev + 1) % quotes.length);
+			setIsTransitioning(false);
+		}, 500);
+	}
 
 	return (
 		<section style={{
-			padding: '8rem 1.5rem',
-			backgroundColor: '#0D0D0D',
-			backgroundImage: 'linear-gradient(to bottom, #0F0F0F, #0D0D0D)',
+			padding: '2rem 1.5rem 2rem',
 			position: 'relative',
-			overflow: 'hidden'
+			overflow: 'hidden',
+			background: 'var(--bg)'
 		}}>
-			{/* Градиентное свечение */}
-			<div style={{
-				position: 'absolute',
-				bottom: '0',
-				left: '0',
-				width: '100%',
-				height: '100%',
-				background: 'radial-gradient(ellipse at bottom left, rgba(236, 72, 153, 0.1), transparent 70%)',
-				filter: 'blur(60px)',
-				zIndex: 0
-			}}></div>
-
 			<div style={{
 				maxWidth: '1200px',
 				margin: '0 auto',
@@ -73,7 +76,7 @@ export default function FunQuotes() {
 					transition: 'opacity 0.8s ease'
 				}}>
 					<h2 style={{
-						fontSize: '3rem',
+						fontSize: '2.5rem',
 						fontWeight: 'bold',
 						textAlign: 'center',
 						marginBottom: '1rem',
@@ -87,7 +90,7 @@ export default function FunQuotes() {
 						color: 'var(--muted)',
 						textAlign: 'center',
 						maxWidth: '600px',
-						margin: '0 auto 5rem',
+						margin: '0 auto 4rem',
 						lineHeight: '1.6'
 					}}>
 						We definitely didn&apos;t make these up. Trust us.
@@ -106,30 +109,6 @@ export default function FunQuotes() {
 					justifyContent: 'center',
 					alignItems: 'center'
 				}}>
-					{/* Декоративные элементы */}
-					<div style={{
-						position: 'absolute',
-						top: '1rem',
-						left: '1rem',
-						fontSize: '4rem',
-						opacity: 0.1,
-						color: 'var(--primary)',
-						fontFamily: 'serif'
-					}}>
-						&quot;
-					</div>
-					<div style={{
-						position: 'absolute',
-						bottom: '1rem',
-						right: '1rem',
-						fontSize: '4rem',
-						opacity: 0.1,
-						color: 'var(--primary)',
-						fontFamily: 'serif'
-					}}>
-						&quot;
-					</div>
-
 					<div style={{ position: 'relative', width: '100%' }}>
 						<div style={{
 							minHeight: '180px',
@@ -138,90 +117,83 @@ export default function FunQuotes() {
 							justifyContent: 'center'
 						}}>
 							<div
+								className={!isTransitioning ? 'fade-in-slide' : ''}
 								style={{
 									fontSize: '2rem',
-									textAlign: 'center',
+									fontWeight: '300',
 									fontStyle: 'italic',
-									color: 'var(--text)',
-									transition: 'opacity 500ms, transform 500ms',
-									opacity: 1,
-									transform: 'translateY(0)',
-									position: 'relative',
-									maxWidth: '90%'
-								}}
-							>
-								&quot;{quotes[currentQuote].text}&quot;
-								<div style={{
-									marginTop: '2rem',
-									fontSize: '1.25rem',
-									fontStyle: 'normal',
-									color: 'var(--secondary)',
-									fontWeight: '600'
+									textAlign: 'center',
+									opacity: isTransitioning ? 0 : 1,
+									transform: isTransitioning ? 'translateY(20px)' : 'translateY(0)',
+									transition: 'opacity 0.5s ease, transform 0.5s ease',
+									lineHeight: '1.4',
+									color: 'var(--text)'
 								}}>
-									— {quotes[currentQuote].author}
-								</div>
+								{quotes[currentQuote].quote}
 							</div>
 						</div>
 
 						<div style={{
+							marginTop: '2rem',
 							display: 'flex',
-							justifyContent: 'center',
 							alignItems: 'center',
-							marginTop: '3rem'
+							justifyContent: 'center',
+							gap: '1rem',
+							opacity: isTransitioning ? 0 : 1,
+							transform: isTransitioning ? 'translateY(20px)' : 'translateY(0)',
+							transition: 'opacity 0.5s ease, transform 0.5s ease',
 						}}>
-							<button
-								onClick={() => setIsAutoplay(!isAutoplay)}
-								style={{
-									background: 'none',
-									border: 'none',
-									color: isAutoplay ? 'var(--secondary)' : 'rgba(255, 255, 255, 0.3)',
-									fontSize: '0.875rem',
-									padding: '0.5rem',
-									cursor: 'pointer',
-									marginRight: '1.5rem',
-									fontWeight: 'bold',
-									transition: 'color 0.3s ease'
-								}}
-							>
-								{isAutoplay ? 'AUTOPLAY ON' : 'AUTOPLAY OFF'}
-							</button>
-
-							<div style={{ display: 'flex', gap: '0.75rem' }}>
-								{quotes.map((_, index) => (
-									<button
-										key={index}
-										onClick={() => {
-											setCurrentQuote(index);
-											setIsAutoplay(false);
-										}}
-										aria-label={`Quote ${index + 1}`}
-										style={{
-											width: '3rem',
-											height: '0.375rem',
-											borderRadius: '0.25rem',
-											backgroundColor: currentQuote === index
-												? 'var(--secondary)'
-												: 'rgba(255, 255, 255, 0.1)',
-											border: 'none',
-											cursor: 'pointer',
-											padding: 0,
-											transition: 'all 0.3s ease'
-										}}
-										onMouseEnter={(e) => {
-											if (currentQuote !== index) {
-												e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
-											}
-										}}
-										onMouseLeave={(e) => {
-											if (currentQuote !== index) {
-												e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-											}
-										}}
-									/>
-								))}
+							<div style={{
+								fontSize: '2.5rem',
+								background: 'var(--primary-subtle)',
+								width: '60px',
+								height: '60px',
+								borderRadius: '50%',
+								display: 'flex',
+								alignItems: 'center',
+								justifyContent: 'center'
+							}}>
+								{quotes[currentQuote].avatar}
+							</div>
+							<div>
+								<div style={{
+									fontSize: '1.25rem',
+									fontWeight: '600',
+									color: 'var(--primary)',
+								}}>
+									{quotes[currentQuote].author}
+								</div>
 							</div>
 						</div>
 					</div>
+				</div>
+
+				<div style={{
+					display: 'flex',
+					justifyContent: 'center',
+					gap: '0.75rem',
+					margin: '2rem auto 0'
+				}}>
+					{quotes.map((_, index) => (
+						<button
+							key={index}
+							onClick={() => {
+								if (intervalRef.current) clearInterval(intervalRef.current);
+								setCurrentQuote(index);
+							}}
+							style={{
+								width: '12px',
+								height: '12px',
+								borderRadius: '50%',
+								backgroundColor: currentQuote === index ? 'var(--primary)' : 'var(--muted)',
+								opacity: currentQuote === index ? 1 : 0.3,
+								border: 'none',
+								cursor: 'pointer',
+								transition: 'all 0.3s ease'
+							}}
+							aria-label={`View quote ${index + 1}`}
+						/>
+					))}
 				</div>
 			</div>
 		</section>

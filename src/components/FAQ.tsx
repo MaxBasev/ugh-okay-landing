@@ -17,6 +17,7 @@ function FAQItem({ question, answer }: FAQItemProps) {
 			transition: 'all 0.3s ease'
 		}}>
 			<button
+				className="btn-hover"
 				style={{
 					display: 'flex',
 					justifyContent: 'space-between',
@@ -26,9 +27,16 @@ function FAQItem({ question, answer }: FAQItemProps) {
 					background: 'none',
 					border: 'none',
 					cursor: 'pointer',
-					padding: '0'
+					padding: '0',
+					transition: 'all 0.2s ease'
 				}}
 				onClick={() => setIsOpen(!isOpen)}
+				onMouseEnter={(e) => {
+					e.currentTarget.style.transform = 'translateX(5px)';
+				}}
+				onMouseLeave={(e) => {
+					e.currentTarget.style.transform = 'translateX(0)';
+				}}
 			>
 				<h3 style={{
 					fontSize: '1.25rem',
@@ -98,23 +106,11 @@ export default function FAQ() {
 
 	return (
 		<section style={{
-			padding: '8rem 1.5rem',
-			backgroundColor: 'var(--bg)',
-			backgroundImage: 'linear-gradient(to bottom, #0D0D0D, #0F0F0F)',
+			padding: '2rem 1.5rem 2rem',
 			position: 'relative',
-			overflow: 'hidden'
+			overflow: 'hidden',
+			background: 'var(--bg)'
 		}}>
-			{/* Gradient background */}
-			<div style={{
-				position: 'absolute',
-				top: '0',
-				right: '0',
-				width: '100%',
-				height: '100%',
-				background: 'radial-gradient(circle at top right, rgba(139, 92, 246, 0.1), transparent 70%)',
-				zIndex: 0
-			}}></div>
-
 			<div className={`${isLoaded ? 'animate-in' : ''}`} style={{
 				maxWidth: '1200px',
 				margin: '0 auto',
@@ -125,7 +121,7 @@ export default function FAQ() {
 				transition: 'opacity 0.8s ease, transform 0.8s ease',
 			}}>
 				<h2 style={{
-					fontSize: '3rem',
+					fontSize: '2.5rem',
 					fontWeight: 'bold',
 					textAlign: 'center',
 					marginBottom: '1rem',
@@ -148,9 +144,7 @@ export default function FAQ() {
 				<div className="quote-card" style={{
 					maxWidth: '800px',
 					margin: '0 auto',
-					padding: '2rem',
-					position: 'relative',
-					overflow: 'hidden',
+					padding: '2rem'
 				}}>
 					{faqItems.map((item, index) => (
 						<FAQItem
@@ -163,12 +157,12 @@ export default function FAQ() {
 					<div style={{
 						marginTop: '2rem',
 						padding: '1.5rem',
-						backgroundColor: 'rgba(139, 92, 246, 0.1)',
+						backgroundColor: 'var(--primary-subtle)',
 						borderRadius: '0.75rem',
 						display: 'flex',
 						alignItems: 'center',
 						gap: '1rem',
-						border: '1px solid rgba(139, 92, 246, 0.2)'
+						border: '1px solid rgba(139, 92, 246, 0.1)'
 					}}>
 						<div style={{ fontSize: '1.5rem' }}>💡</div>
 						<p style={{
@@ -176,7 +170,7 @@ export default function FAQ() {
 							color: 'var(--muted)',
 							margin: 0
 						}}>
-							Have more questions? Great way to procrastinate! Email us at <a href="mailto:hi@ughokay.app" style={{ color: 'var(--secondary)', textDecoration: 'none', fontWeight: '500' }}>hi@ughokay.app</a>
+							Have more questions? Great way to procrastinate! Email us at <a href="mailto:hi@ughokay.app" className="btn-hover" style={{ color: 'var(--secondary)', textDecoration: 'none', fontWeight: '500', transition: 'all 0.2s ease' }} onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.8'; }} onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}>hi@ughokay.app</a>
 						</p>
 					</div>
 				</div>

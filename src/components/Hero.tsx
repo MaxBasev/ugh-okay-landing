@@ -13,24 +13,13 @@ export default function Hero() {
 
 	return (
 		<section style={{
-			padding: '8rem 1.5rem 6rem',
+			padding: '6rem 1.5rem 2rem',
 			textAlign: 'center',
-			background: 'linear-gradient(180deg, var(--bg) 0%, #131313 100%)',
 			position: 'relative',
-			overflow: 'hidden'
+			overflow: 'hidden',
+			background: 'var(--bg)',
+			marginBottom: 0
 		}}>
-			{/* Background gradient */}
-			<div style={{
-				position: 'absolute',
-				top: '10%',
-				left: '5%',
-				width: '80vw',
-				height: '80vh',
-				background: 'radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, rgba(236, 72, 153, 0.05) 40%, transparent 70%)',
-				filter: 'blur(60px)',
-				zIndex: 0
-			}}></div>
-
 			{/* Main content */}
 			<div className={`${isLoaded ? 'animate-in' : ''}`} style={{
 				maxWidth: '1200px',
@@ -42,11 +31,11 @@ export default function Hero() {
 				transition: 'opacity 0.8s ease, transform 0.8s ease',
 			}}>
 				{/* Logo */}
-				<div style={{
-					width: '180px',
-					height: '180px',
+				<div className="float" style={{
+					width: '160px',
+					height: '160px',
 					position: 'relative',
-					margin: '0 auto 1.5rem'
+					margin: '0 auto 1rem'
 				}}>
 					<Image
 						src="/images/UghOkay-brain.png"
@@ -54,7 +43,7 @@ export default function Hero() {
 						fill
 						style={{
 							objectFit: 'contain',
-							filter: 'drop-shadow(0 0 30px rgba(139, 92, 246, 0.5))'
+							filter: 'drop-shadow(var(--neon-glow))'
 						}}
 					/>
 				</div>
@@ -63,7 +52,7 @@ export default function Hero() {
 				<h2 style={{
 					fontSize: '2.5rem',
 					fontWeight: 'bold',
-					marginBottom: '3rem',
+					marginBottom: '2rem',
 					background: 'linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%)',
 					WebkitBackgroundClip: 'text',
 					WebkitTextFillColor: 'transparent',
@@ -76,13 +65,13 @@ export default function Hero() {
 				{/* Quote card */}
 				<div className="quote-card" style={{
 					maxWidth: '800px',
-					margin: '0 auto 4rem',
-					padding: '3rem 2rem',
+					margin: '0 auto 3rem',
+					padding: '2.5rem 2rem',
 					animation: 'fadeIn 0.8s ease-out forwards',
-					animationDelay: '0.2s',
+					animationDelay: '0.2s'
 				}}>
 					<h1 style={{
-						fontSize: 'clamp(2.5rem, 7vw, 4rem)',
+						fontSize: 'clamp(2.3rem, 7vw, 3.8rem)',
 						fontWeight: '800',
 						lineHeight: '1.2',
 						marginBottom: '1.5rem',
@@ -112,32 +101,34 @@ export default function Hero() {
 					{/* Primary button */}
 					<Link
 						href="#"
+						className="btn-hover"
 						style={{
 							padding: '1.25rem 2rem',
 							background: 'var(--gradient)',
 							color: '#FFFFFF',
 							borderRadius: '100px',
-							fontWeight: '600',
-							fontSize: '1.25rem',
+							fontWeight: '700',
+							fontSize: '1.35rem',
 							display: 'flex',
 							alignItems: 'center',
 							justifyContent: 'center',
 							gap: '0.75rem',
 							textDecoration: 'none',
-							boxShadow: '0 10px 25px rgba(139, 92, 246, 0.3)',
-							maxWidth: '300px',
+							boxShadow: 'var(--neon-glow), 0 0 15px rgba(139, 92, 246, 0.5)',
+							maxWidth: '320px',
 							width: '100%',
 							transition: 'all 0.3s ease',
 							position: 'relative',
-							overflow: 'hidden'
+							overflow: 'hidden',
+							animation: 'pulse 2s infinite'
 						}}
 						onMouseEnter={(e) => {
-							e.currentTarget.style.transform = 'translateY(-5px)';
-							e.currentTarget.style.boxShadow = '0 15px 30px rgba(139, 92, 246, 0.4)';
+							e.currentTarget.style.transform = 'translateY(-3px) scale(1.05)';
+							e.currentTarget.style.boxShadow = '0 8px 25px rgba(139, 92, 246, 0.4)';
 						}}
 						onMouseLeave={(e) => {
-							e.currentTarget.style.transform = 'translateY(0)';
-							e.currentTarget.style.boxShadow = '0 10px 25px rgba(139, 92, 246, 0.3)';
+							e.currentTarget.style.transform = 'translateY(0) scale(1)';
+							e.currentTarget.style.boxShadow = 'var(--neon-glow), 0 0 15px rgba(139, 92, 246, 0.5)';
 						}}
 					>
 						<span>Change my brain 🧠</span>
@@ -151,7 +142,7 @@ export default function Hero() {
 						maxWidth: '500px',
 						lineHeight: '1.6'
 					}}>
-						Нажмите для загрузки или прокрутите вниз, чтобы узнать, почему прокрастинация тоже заслуживает поддержки.
+						Click to download or scroll down to learn why procrastination deserves support too.
 					</p>
 				</div>
 			</div>

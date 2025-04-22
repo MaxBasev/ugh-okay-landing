@@ -33,31 +33,28 @@ export default function WhyItWorks() {
 
 	return (
 		<section style={{
-			padding: '8rem 1.5rem',
-			backgroundColor: '#0F0F0F',
+			padding: '2rem 1.5rem 2rem',
 			position: 'relative',
-			overflow: 'hidden'
+			overflow: 'hidden',
+			background: 'var(--bg)'
 		}}>
-			{/* Декоративный фон */}
-			<div style={{
-				position: 'absolute',
-				top: '0',
-				right: '0',
-				width: '100%',
-				height: '100%',
-				background: 'radial-gradient(circle at top right, rgba(236, 72, 153, 0.1), transparent 60%)',
-				zIndex: 0
-			}}></div>
-
 			<div style={{
 				maxWidth: '1200px',
 				margin: '0 auto',
 				position: 'relative',
-				zIndex: 1
+				zIndex: 1,
+				display: 'flex',
+				flexDirection: 'column',
+				alignItems: 'center'
 			}}>
-				<div className={loaded ? 'animate-in' : ''} style={{ opacity: loaded ? 1 : 0, transition: 'opacity 0.5s ease' }}>
+				<div className={loaded ? 'animate-in' : ''} style={{
+					opacity: loaded ? 1 : 0,
+					transition: 'opacity 0.5s ease',
+					textAlign: 'center',
+					width: '100%'
+				}}>
 					<h2 style={{
-						fontSize: '3rem',
+						fontSize: '2.5rem',
 						fontWeight: 'bold',
 						textAlign: 'center',
 						marginBottom: '5rem',
@@ -71,15 +68,17 @@ export default function WhyItWorks() {
 
 				<div style={{
 					display: 'grid',
-					gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
+					gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
 					gap: '2.5rem',
 					maxWidth: '1100px',
-					margin: '0 auto'
+					margin: '0 auto',
+					justifyContent: 'center',
+					width: '100%'
 				}}>
 					{quotes.map((quote, index) => (
 						<div
 							key={index}
-							className="quote-card"
+							className="quote-card btn-hover"
 							style={{
 								opacity: loaded ? 1 : 0,
 								transform: loaded ? 'translateY(0)' : 'translateY(30px)',
@@ -89,7 +88,16 @@ export default function WhyItWorks() {
 								flexDirection: 'column',
 								justifyContent: 'center',
 								height: '100%',
-								minHeight: '180px'
+								minHeight: '180px',
+								cursor: 'default'
+							}}
+							onMouseEnter={(e) => {
+								e.currentTarget.style.transform = 'translateY(-5px)';
+								e.currentTarget.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.15)';
+							}}
+							onMouseLeave={(e) => {
+								e.currentTarget.style.transform = 'translateY(0)';
+								e.currentTarget.style.boxShadow = 'var(--card-shadow)';
 							}}
 						>
 							<p style={{
