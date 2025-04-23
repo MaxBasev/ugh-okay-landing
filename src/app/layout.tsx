@@ -6,34 +6,37 @@ import SmoothScroll from "@/components/SmoothScroll";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: "UghOkay — Stop Procrastinating Without Stress",
-	description: "UghOkay helps you stop procrastinating just long enough to do one thing. And that's enough.",
+	title: "UghOkay — Stop scrolling, start doing",
+	description: "Before you scroll again, tap this. UghOkay helps your brain pick a task — and escape the doomscroll trap.",
+	keywords: "productivity, minimal app, anti-procrastination, offline app, habit app",
+	authors: [{ name: "Maxim Basev" }],
+	themeColor: "#8A2BE2",
 	icons: {
 		icon: "/UghOkay-brain.ico",
 		apple: "/UghOkay-brain.ico",
 	},
 	openGraph: {
-		title: "UghOkay — Stop Procrastinating Without Stress",
-		description: "UghOkay helps you stop procrastinating just long enough to do one thing. And that's enough.",
-		url: "https://ughokay.app",
-		siteName: "UghOkay",
-		locale: "en_US",
 		type: "website",
+		url: "https://ughokay.maxbasev.com",
+		title: "UghOkay — Stop scrolling, start doing",
+		description: "Before you scroll again, tap this. UghOkay helps your brain pick a task — and escape the doomscroll trap.",
+		siteName: "UghOkay",
 		images: [
 			{
-				url: "/images/UghOkay-brain.png",
-				width: 256,
-				height: 256,
+				url: "/og-image.png",
+				width: 1200,
+				height: 630,
 				alt: "UghOkay App",
 			},
 		],
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "UghOkay — Stop Procrastinating Without Stress",
-		description: "UghOkay helps you stop procrastinating just long enough to do one thing. And that's enough.",
-		images: ["/images/UghOkay-brain.png"],
+		title: "UghOkay — Stop scrolling, start doing",
+		description: "Before you scroll again, tap this. UghOkay helps your brain pick a task — and escape the doomscroll trap.",
+		images: ["/og-image.png"],
 	},
+	metadataBase: new URL('https://ughokay.maxbasev.com'),
 };
 
 export default function RootLayout({
