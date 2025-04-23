@@ -38,7 +38,7 @@ export default function Screenshots() {
 	];
 
 	return (
-		<section style={{
+		<section id="screenshots" style={{
 			padding: '2rem 1.5rem 2rem',
 			position: 'relative',
 			overflow: 'hidden',

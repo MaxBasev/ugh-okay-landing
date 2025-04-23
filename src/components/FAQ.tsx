@@ -111,7 +111,7 @@ export default function FAQ() {
 	];
 
 	return (
-		<section style={{
+		<section id="faq" style={{
 			padding: '2rem 1.5rem 2rem',
 			position: 'relative',
 			overflow: 'hidden',
@@ -176,7 +176,7 @@ export default function FAQ() {
 							color: 'var(--muted)',
 							margin: 0
 						}}>
-							Have more questions? Great way to procrastinate! Email us at <a href="mailto:hi@ughokay.app" className="btn-hover" style={{ color: 'var(--secondary)', textDecoration: 'none', fontWeight: '500', transition: 'all 0.2s ease' }} onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.8'; }} onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}>hi@ughokay.app</a>
+							Have more questions? Great way to procrastinate! Email us at <a href="mailto:ughokay@maxbasev.com" className="btn-hover" style={{ color: 'var(--secondary)', textDecoration: 'none', fontWeight: '500', transition: 'all 0.2s ease' }} onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.8'; }} onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}>ughokay@maxbasev.com</a>
 						</p>
 					</div>
 				</div>

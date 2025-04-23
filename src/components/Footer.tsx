@@ -130,7 +130,7 @@ export default function Footer() {
 					<ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
 						<li style={{ marginBottom: '1.5rem' }}>
 							<a
-								href="mailto:hi@ughokay.app"
+								href="mailto:ughokay@maxbasev.com"
 								className="btn-hover"
 								style={{
 									color: 'var(--muted)',
@@ -163,7 +163,7 @@ export default function Footer() {
 										<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
 									</svg>
 								</div>
-								hi@ughokay.app
+								ughokay@maxbasev.com
 							</a>
 						</li>
 						<li>
@@ -250,7 +250,7 @@ export default function Footer() {
 					Terms of Service
 				</Link>
 				<a
-					href="https://github.com/ugh-okay"
+					href="https://github.com/MaxBasev/ugh-okay-landing"
 					className="btn-hover"
 					style={{
 						color: 'rgba(255, 255, 255, 0.4)',

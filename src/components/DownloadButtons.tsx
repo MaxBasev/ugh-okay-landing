@@ -11,7 +11,7 @@ export default function DownloadButtons() {
 	}, []);
 
 	return (
-		<section style={{
+		<section id="download" style={{
 			padding: '0.5rem 1.5rem 2.5rem',
 			textAlign: 'center',
 			position: 'relative',

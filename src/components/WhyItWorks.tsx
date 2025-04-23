@@ -32,7 +32,7 @@ export default function WhyItWorks() {
 	];
 
 	return (
-		<section style={{
+		<section id="why-it-works" style={{
 			padding: '2rem 1.5rem 2rem',
 			position: 'relative',
 			overflow: 'hidden',
