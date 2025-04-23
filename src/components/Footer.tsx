@@ -62,6 +62,67 @@ export default function Footer() {
 						The procrastination app that finally understands you don&apos;t want to be yelled at about productivity.
 					</p>
 
+					<div style={{
+						display: 'flex',
+						gap: '1rem',
+						marginTop: '1.5rem',
+						flexWrap: 'wrap'
+					}}>
+						<Link
+							href="#"
+							className="btn-hover"
+							style={{
+								display: 'inline-block',
+								transition: 'all 0.2s ease',
+							}}
+							onMouseEnter={(e) => {
+								e.currentTarget.style.transform = 'translateY(-3px)';
+								e.currentTarget.style.opacity = '0.9';
+							}}
+							onMouseLeave={(e) => {
+								e.currentTarget.style.transform = 'translateY(0)';
+								e.currentTarget.style.opacity = '1';
+							}}
+						>
+							<Image
+								src="/images/Download-on-the-App-Store-1.svg"
+								alt="Download on the App Store"
+								width={140}
+								height={42}
+								style={{
+									filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2))'
+								}}
+							/>
+						</Link>
+
+						<Link
+							href="#"
+							className="btn-hover"
+							style={{
+								display: 'inline-block',
+								transition: 'all 0.2s ease',
+							}}
+							onMouseEnter={(e) => {
+								e.currentTarget.style.transform = 'translateY(-3px)';
+								e.currentTarget.style.opacity = '0.9';
+							}}
+							onMouseLeave={(e) => {
+								e.currentTarget.style.transform = 'translateY(0)';
+								e.currentTarget.style.opacity = '1';
+							}}
+						>
+							<Image
+								src="/images/GetItOnGooglePlay_Badge_Web_color_English.png"
+								alt="Get it on Google Play"
+								width={140}
+								height={42}
+								style={{
+									filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2))'
+								}}
+							/>
+						</Link>
+					</div>
+
 					<p style={{
 						fontSize: '0.95rem',
 						color: 'rgba(255, 255, 255, 0.3)',
