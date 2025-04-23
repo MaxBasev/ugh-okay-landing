@@ -100,7 +100,7 @@ export default function Hero() {
 				}}>
 					{/* Primary button */}
 					<Link
-						href="#"
+						href="#download"
 						className="btn-hover"
 						style={{
 							padding: '1.25rem 2rem',
