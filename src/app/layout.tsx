@@ -7,6 +7,10 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
 	title: "UghOkay — Stop Procrastinating Without Stress",
 	description: "UghOkay helps you stop procrastinating just long enough to do one thing. And that's enough.",
+	icons: {
+		icon: "/UghOkay-brain.ico",
+		apple: "/UghOkay-brain.ico",
+	},
 	openGraph: {
 		title: "UghOkay — Stop Procrastinating Without Stress",
 		description: "UghOkay helps you stop procrastinating just long enough to do one thing. And that's enough.",

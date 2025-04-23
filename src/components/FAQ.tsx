@@ -13,7 +13,7 @@ function FAQItem({ question, answer }: FAQItemProps) {
 	return (
 		<div style={{
 			borderBottom: '1px solid var(--border)',
-			padding: '1.25rem 0',
+			padding: '0.9rem 0',
 			transition: 'all 0.3s ease'
 		}}>
 			<button
@@ -33,16 +33,22 @@ function FAQItem({ question, answer }: FAQItemProps) {
 				onClick={() => setIsOpen(!isOpen)}
 				onMouseEnter={(e) => {
 					e.currentTarget.style.transform = 'translateX(5px)';
+					const h3 = e.currentTarget.querySelector('h3');
+					if (h3) h3.style.color = 'var(--primary)';
 				}}
 				onMouseLeave={(e) => {
 					e.currentTarget.style.transform = 'translateX(0)';
+					const h3 = e.currentTarget.querySelector('h3');
+					if (h3) h3.style.color = 'var(--text)';
 				}}
 			>
 				<h3 style={{
 					fontSize: '1.25rem',
 					fontWeight: '600',
 					color: 'var(--text)',
-					transition: 'color 0.2s ease'
+					transition: 'color 0.2s ease',
+					opacity: '0.95',
+					textShadow: '0 0 1px rgba(255, 255, 255, 0.2)'
 				}}>{question}</h3>
 				<span style={{
 					marginLeft: '1.5rem',
@@ -135,7 +141,7 @@ export default function FAQ() {
 					color: 'var(--muted)',
 					textAlign: 'center',
 					maxWidth: '600px',
-					margin: '0 auto 3.5rem',
+					margin: '0 auto 2.5rem',
 					fontStyle: 'italic'
 				}}>
 					(Frequently Avoided Questions)
@@ -144,7 +150,7 @@ export default function FAQ() {
 				<div className="quote-card" style={{
 					maxWidth: '800px',
 					margin: '0 auto',
-					padding: '2rem'
+					padding: '1.75rem'
 				}}>
 					{faqItems.map((item, index) => (
 						<FAQItem
@@ -155,7 +161,7 @@ export default function FAQ() {
 					))}
 
 					<div style={{
-						marginTop: '2rem',
+						marginTop: '1.5rem',
 						padding: '1.5rem',
 						backgroundColor: 'var(--primary-subtle)',
 						borderRadius: '0.75rem',

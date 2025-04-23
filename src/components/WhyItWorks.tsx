@@ -54,10 +54,10 @@ export default function WhyItWorks() {
 					width: '100%'
 				}}>
 					<h2 style={{
-						fontSize: '2.5rem',
+						fontSize: 'clamp(2rem, 5vw, 2.5rem)',
 						fontWeight: 'bold',
 						textAlign: 'center',
-						marginBottom: '5rem',
+						marginBottom: 'clamp(3rem, 10vw, 5rem)',
 						color: 'var(--text)',
 						position: 'relative',
 						display: 'inline-block'
@@ -68,9 +68,9 @@ export default function WhyItWorks() {
 
 				<div style={{
 					display: 'grid',
-					gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+					gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
 					gap: '2.5rem',
-					maxWidth: '1100px',
+					maxWidth: '800px',
 					margin: '0 auto',
 					justifyContent: 'center',
 					width: '100%'
@@ -83,7 +83,7 @@ export default function WhyItWorks() {
 								opacity: loaded ? 1 : 0,
 								transform: loaded ? 'translateY(0)' : 'translateY(30px)',
 								transition: `all 0.7s ease ${quote.delay}`,
-								padding: '2.5rem',
+								padding: 'clamp(1.5rem, 5vw, 2.5rem)',
 								display: 'flex',
 								flexDirection: 'column',
 								justifyContent: 'center',
@@ -101,13 +101,15 @@ export default function WhyItWorks() {
 							}}
 						>
 							<p style={{
-								fontSize: '1.5rem',
+								fontSize: 'clamp(1.1rem, 4vw, 1.5rem)',
 								fontWeight: '500',
 								fontStyle: 'italic',
 								color: 'var(--text)',
 								marginBottom: '1.5rem',
 								lineHeight: '1.4',
-								textAlign: 'center'
+								textAlign: 'center',
+								wordWrap: 'break-word',
+								hyphens: 'auto'
 							}}>
 								&quot;{quote.text}&quot;
 							</p>

@@ -104,11 +104,19 @@ export default function Screenshots() {
 								padding: '0',
 								overflow: 'hidden',
 								borderRadius: '1.5rem',
-								boxShadow: 'var(--card-shadow)',
+								boxShadow: '0 10px 30px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 0 3px rgba(139, 92, 246, 0.05)',
 								position: 'relative',
 								background: 'var(--card-bg)',
-								transition: 'transform 0.2s ease'
-							}}>
+								transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+								border: '1px solid rgba(255, 255, 255, 0.05)'
+							}}
+								onMouseEnter={(e) => {
+									e.currentTarget.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.15), 0 0 0 4px rgba(139, 92, 246, 0.1)';
+								}}
+								onMouseLeave={(e) => {
+									e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 0 3px rgba(139, 92, 246, 0.05)';
+								}}
+							>
 								{/* Notch */}
 								<div style={{
 									position: 'absolute',
@@ -162,17 +170,19 @@ export default function Screenshots() {
 							}}>
 								<p style={{
 									fontSize: '1.25rem',
-									fontWeight: '600',
+									fontWeight: '700',
 									color: 'var(--text)',
-									margin: '0 0 0.5rem'
+									margin: '0 0 0.5rem',
+									letterSpacing: '-0.01em'
 								}}>
 									{screenshot.title}
 								</p>
 								<p style={{
 									fontSize: '1rem',
 									fontStyle: 'italic',
-									color: 'var(--secondary)',
-									marginTop: '0.5rem'
+									color: 'var(--primary)',
+									marginTop: '0.5rem',
+									opacity: 0.9
 								}}>
 									{screenshot.tagline}
 								</p>
