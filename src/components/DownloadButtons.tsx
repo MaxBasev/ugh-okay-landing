@@ -77,7 +77,9 @@ export default function DownloadButtons() {
 
 					{/* Google Play Button */}
 					<Link
-						href="#"
+						href="https://play.google.com/store/apps/details?id=com.ughokay.app"
+						target="_blank"
+						rel="noopener noreferrer"
 						className="btn-hover"
 						style={{
 							display: 'inline-block',
