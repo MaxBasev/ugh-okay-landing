@@ -47,7 +47,9 @@ export default function DownloadButtons() {
 				}}>
 					{/* App Store Button */}
 					<Link
-						href="#"
+						href="https://apps.apple.com/kg/app/ugh-okay/id6744969077"
+						target="_blank"
+						rel="noopener noreferrer"
 						className="btn-hover"
 						style={{
 							display: 'inline-block',
