@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 	description: "Before you scroll again, tap this. UghOkay helps your brain pick a task — and escape the doomscroll trap.",
 	keywords: "productivity, minimal app, anti-procrastination, offline app, habit app",
 	authors: [{ name: "Maxim Basev" }],
-	themeColor: "#8A2BE2",
+
 	icons: {
 		icon: "/UghOkay-brain.ico",
 		apple: "/UghOkay-brain.ico",
@@ -38,6 +38,10 @@ export const metadata: Metadata = {
 		images: ["/og-image.png"],
 	},
 	metadataBase: new URL('https://ughokay.maxbasev.com'),
+};
+
+export const viewport: Viewport = {
+	themeColor: "#8A2BE2",
 };
 
 export default function RootLayout({
